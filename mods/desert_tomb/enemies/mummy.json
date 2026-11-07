@@ -1,0 +1,46 @@
+{
+  "id": "mummy",
+  "name": "Мумия",
+  "symbol": "u",
+  "stats": {
+    "health": 50,
+    "reward": 15,
+    "speed": 2.3,
+    "aggro_range": 7,
+    "attack_range": 1.6,
+    "attack_damage": 14,
+    "attack_cooldown": 1.4,
+    "attack_duration": 0.5,
+    "attack_hit_time": 0.28,
+    "dodge_chance": 0.2
+  },
+  "sprite": {
+    "frame": [
+      150,
+      150
+    ],
+    "scale": 1.25,
+    "animations": {
+      "idle": {
+        "file": "sprites/mummy_idle.png",
+        "fps": 5
+      },
+      "move": {
+        "file": "sprites/mummy_walk.png",
+        "fps": 6.7
+      },
+      "attack": {
+        "file": "sprites/mummy_attack.png",
+        "fps": 16
+      },
+      "hurt": {
+        "file": "sprites/mummy_take_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/mummy_death.png",
+        "fps": 6.7
+      }
+    }
+  }
+}

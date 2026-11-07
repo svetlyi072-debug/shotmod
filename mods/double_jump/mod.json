@@ -1,0 +1,11 @@
+{
+  "id": "double_jump",
+  "name": "Двойной прыжок",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Нажми Space ещё раз в воздухе — и прыгни второй раз.",
+  "api": 1,
+  "scripts": [
+    "scripts/main.gd"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "id": "shadow_lord",
+  "name": "Теневой властелин",
+  "symbol": "D",
+  "stats": {
+    "health": 280,
+    "smart_health_multiplier": 1.5,
+    "speed": 2,
+    "stop_distance": 4.5,
+    "arena": 14,
+    "activation_range": 14,
+    "enrage_at": 0.5,
+    "max_minions": 4
+  },
+  "sprite": {
+    "frame": [
+      250,
+      250
+    ],
+    "scale": 1,
+    "animations": {
+      "idle": {
+        "file": "sprites/mage_idle.png",
+        "fps": 8
+      },
+      "run": {
+        "file": "sprites/mage_run.png",
+        "fps": 11.4
+      },
+      "attack": {
+        "file": "sprites/mage_attack2.png",
+        "fps": 16
+      },
+      "attack2": {
+        "file": "sprites/mage_attack1.png",
+        "fps": 13.3
+      },
+      "hit": {
+        "file": "sprites/mage_take_hit.png",
+        "fps": 10
+      },
+      "death": {
+        "file": "sprites/mage_death.png",
+        "fps": 7
+      }
+    }
+  },
+  "attacks": [
+    {
+      "type": "melee",
+      "range": 2.4,
+      "damage": 17,
+      "interval": 1.6,
+      "windup": 0.3,
+      "animation": "attack"
+    },
+    {
+      "type": "projectile",
+      "pattern": "fan",
+      "projectile": "bolt",
+      "count": 3,
+      "enraged_count": 5,
+      "spread": 14,
+      "speed": 9,
+      "damage": 11,
+      "interval": 4.5,
+      "min_range": 3,
+      "windup": 0.4,
+      "gap": 0,
+      "scale": 1.5,
+      "mouth": [
+        1.8,
+        -2.2
+      ],
+      "animation": "attack2"
+    },
+    {
+      "type": "projectile",
+      "pattern": "rain",
+      "projectile": "bolt",
+      "waves": 2,
+      "wave_gap": 1.4,
+      "width": 9,
+      "spacing": 1.9,
+      "damage": 11,
+      "interval": 13,
+      "windup": 0.5,
+      "scale": 1.4,
+      "animation": "attack2"
+    },
+    {
+      "type": "shockwave",
+      "radius": 8,
+      "speed": 9,
+      "damage": 18,
+      "interval": 10,
+      "windup": 0.4,
+      "animation": "attack"
+    },
+    {
+      "type": "summon",
+      "enemy": "t",
+      "count": 2,
+      "interval": 16,
+      "windup": 0.6,
+      "near_player": true,
+      "animation": "attack2"
+    }
+  ]
+}

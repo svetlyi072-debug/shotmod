@@ -1,0 +1,11 @@
+{
+  "id": "moon_gravity",
+  "name": "Лунная гравитация",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Прыгаешь в 2,2 раза выше и долго парим в воздухе — как на Луне.",
+  "api": 1,
+  "scripts": [
+    "scripts/main.gd"
+  ]
+}

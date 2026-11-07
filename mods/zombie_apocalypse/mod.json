@@ -1,0 +1,19 @@
+{
+  "id": "zombie_apocalypse",
+  "name": "Зомби-апокалипсис",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Шесть уровней, кишащих мертвецами: обычные зомби, могильные (встают из земли), рыцари-мертвецы и в конце — Король зомби.",
+  "api": 1,
+  "campaign": {
+    "title": "Зомби-апокалипсис",
+    "levels": [
+      "levels/01_outskirts.txt",
+      "levels/02_graveyard.txt",
+      "levels/03_barricade.txt",
+      "levels/04_crypt.txt",
+      "levels/05_dead_hall.txt",
+      "levels/06_zombie_king.txt"
+    ]
+  }
+}

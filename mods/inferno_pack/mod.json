@@ -1,0 +1,17 @@
+{
+  "id": "inferno_pack",
+  "name": "Преисподняя",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Огненные скелеты, бесы с огненными шарами, лавовые воины, пепельные мертвецы из праха — и босс «Владыка пламени» с огненным дождём. Четыре уровня.",
+  "api": 1,
+  "campaign": {
+    "title": "Преисподняя",
+    "levels": [
+      "levels/01_hell_gates.txt",
+      "levels/02_lava_bridges.txt",
+      "levels/03_ash_hall.txt",
+      "levels/04_flame_throne.txt"
+    ]
+  }
+}

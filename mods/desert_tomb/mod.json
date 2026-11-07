@@ -1,0 +1,17 @@
+{
+  "id": "desert_tomb",
+  "name": "Гробница фараона",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Пески, мумии, стаи скарабеев, песчаные шаманы, золотые стражи гробницы — и Фараон, который зовёт мумий и бьёт ударной волной. Четыре уровня.",
+  "api": 1,
+  "campaign": {
+    "title": "Гробница фараона",
+    "levels": [
+      "levels/01_sands.txt",
+      "levels/02_tomb.txt",
+      "levels/03_scarab_crypt.txt",
+      "levels/04_pharaoh_hall.txt"
+    ]
+  }
+}

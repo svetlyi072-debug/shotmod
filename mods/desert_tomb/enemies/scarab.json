@@ -1,0 +1,46 @@
+{
+  "id": "scarab",
+  "name": "Скарабей",
+  "symbol": "a",
+  "stats": {
+    "health": 14,
+    "reward": 6,
+    "speed": 5,
+    "aggro_range": 8,
+    "attack_range": 1,
+    "attack_damage": 6,
+    "attack_cooldown": 0.9,
+    "attack_duration": 0.3,
+    "attack_hit_time": 0.15,
+    "dodge_chance": 0.3
+  },
+  "sprite": {
+    "frame": [
+      70,
+      70
+    ],
+    "scale": 1,
+    "animations": {
+      "idle": {
+        "file": "sprites/scarab_idle.png",
+        "fps": 11.1
+      },
+      "move": {
+        "file": "sprites/scarab_run.png",
+        "fps": 16
+      },
+      "attack": {
+        "file": "sprites/scarab_bite.png",
+        "fps": 40
+      },
+      "hurt": {
+        "file": "sprites/scarab_hurt.png",
+        "fps": 12
+      },
+      "death": {
+        "file": "sprites/scarab_death.png",
+        "fps": 12
+      }
+    }
+  }
+}

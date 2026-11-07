@@ -1,0 +1,110 @@
+{
+  "id": "grax",
+  "name": "Вождь Гракс",
+  "symbol": "X",
+  "stats": {
+    "health": 300,
+    "smart_health_multiplier": 1.5,
+    "speed": 2.3,
+    "stop_distance": 2.4,
+    "arena": 14,
+    "activation_range": 14,
+    "enrage_at": 0.5,
+    "max_minions": 5
+  },
+  "sprite": {
+    "frame": [
+      150,
+      150
+    ],
+    "scale": 3,
+    "animations": {
+      "idle": {
+        "file": "sprites/brute_idle.png",
+        "fps": 4.4
+      },
+      "run": {
+        "file": "sprites/brute_run.png",
+        "fps": 11.4
+      },
+      "attack": {
+        "file": "sprites/brute_attack.png",
+        "fps": 16
+      },
+      "hit": {
+        "file": "sprites/brute_take_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/brute_death.png",
+        "fps": 4.4
+      }
+    }
+  },
+  "attacks": [
+    {
+      "type": "melee",
+      "range": 2.8,
+      "damage": 19,
+      "interval": 1.5,
+      "windup": 0.3,
+      "animation": "attack"
+    },
+    {
+      "type": "projectile",
+      "pattern": "lob",
+      "projectile": "bomb",
+      "count": 3,
+      "enraged_count": 5,
+      "spread_tiles": 1.8,
+      "flight_time": 1,
+      "damage": 14,
+      "explode_radius": 1.4,
+      "interval": 6,
+      "min_range": 3,
+      "windup": 0.4,
+      "gap": 0.15,
+      "scale": 1.2,
+      "mouth": [
+        1.6,
+        -2.5
+      ],
+      "animation": "attack"
+    },
+    {
+      "type": "shockwave",
+      "radius": 9,
+      "speed": 9,
+      "damage": 18,
+      "interval": 9,
+      "windup": 0.4,
+      "animation": "attack"
+    },
+    {
+      "type": "summon",
+      "enemy": "g",
+      "count": 2,
+      "interval": 14,
+      "windup": 0.5,
+      "near_player": true,
+      "animation": "attack"
+    },
+    {
+      "type": "summon",
+      "enemy": "a",
+      "count": 1,
+      "interval": 22,
+      "windup": 0.5,
+      "near_player": true,
+      "animation": "attack"
+    },
+    {
+      "type": "charge",
+      "speed": 10,
+      "damage": 22,
+      "interval": 11,
+      "windup": 0.8,
+      "max_time": 1.5
+    }
+  ]
+}

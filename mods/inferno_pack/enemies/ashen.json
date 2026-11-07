@@ -1,0 +1,62 @@
+{
+  "id": "ashen",
+  "name": "Пепельный",
+  "symbol": "Q",
+  "stats": {
+    "health": 40,
+    "reward": 20,
+    "speed": 3,
+    "aggro_range": 8,
+    "attack_range": 1.5,
+    "attack_damage": 12,
+    "attack_cooldown": 1.3,
+    "attack_duration": 0.5,
+    "attack_hit_time": 0.28,
+    "dodge_chance": 0
+  },
+  "dormant": {
+    "wake_range": 2.2,
+    "wake_time": 0.8,
+    "lying_height": 12
+  },
+  "sprite": {
+    "frame": [
+      150,
+      150
+    ],
+    "scale": 1.25,
+    "animations": {
+      "closed": {
+        "file": "sprites/ash_death.png",
+        "fps": 4,
+        "first": 3,
+        "count": 1
+      },
+      "wake": {
+        "file": "sprites/ash_death.png",
+        "fps": 5,
+        "reverse": true
+      },
+      "idle": {
+        "file": "sprites/ash_idle.png",
+        "fps": 5
+      },
+      "move": {
+        "file": "sprites/ash_walk.png",
+        "fps": 8
+      },
+      "attack": {
+        "file": "sprites/ash_attack.png",
+        "fps": 16
+      },
+      "hurt": {
+        "file": "sprites/ash_take_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/ash_death.png",
+        "fps": 6.7
+      }
+    }
+  }
+}

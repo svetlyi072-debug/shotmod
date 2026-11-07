@@ -1,0 +1,11 @@
+{
+  "id": "apple_drops",
+  "name": "Яблоки с врагов",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "С убитых врагов с шансом 30% выпадает яблоко-аптечка, с боссов — два яблока.",
+  "api": 1,
+  "scripts": [
+    "scripts/main.gd"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "sky_islands",
+  "name": "Небесные острова",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Пять уровней над пропастью: острова разной высоты, ямы по три клетки и летучие мыши. Одно неверное движение — и вниз.",
+  "api": 1,
+  "campaign": {
+    "title": "Небесные острова",
+    "levels": [
+      "levels/01_dawn.txt",
+      "levels/02_clouds.txt",
+      "levels/03_wind.txt",
+      "levels/04_storm.txt",
+      "levels/05_eye.txt"
+    ]
+  }
+}

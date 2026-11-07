@@ -1,0 +1,17 @@
+{
+  "id": "shadow_realm",
+  "name": "Царство теней",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Фиолетовый мрак: теневые рыцари, призрачные маги, тени, встающие из темноты, — и Теневой властелин с огненными… то есть теневыми шарами. Четыре уровня.",
+  "api": 1,
+  "campaign": {
+    "title": "Царство теней",
+    "levels": [
+      "levels/01_twilight_road.txt",
+      "levels/02_shadow_crypt.txt",
+      "levels/03_mirror_hall.txt",
+      "levels/04_lord_throne.txt"
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": "pharaoh",
+  "name": "Фараон",
+  "symbol": "H",
+  "stats": {
+    "health": 280,
+    "smart_health_multiplier": 1.5,
+    "speed": 2,
+    "stop_distance": 2.2,
+    "arena": 14,
+    "activation_range": 14,
+    "enrage_at": 0.5,
+    "max_minions": 4
+  },
+  "sprite": {
+    "frame": [
+      160,
+      111
+    ],
+    "scale": 1.9,
+    "animations": {
+      "idle": {
+        "file": "sprites/pharaoh_idle.png",
+        "fps": 7.3
+      },
+      "run": {
+        "file": "sprites/pharaoh_run.png",
+        "fps": 10
+      },
+      "attack": {
+        "file": "sprites/pharaoh_attack.png",
+        "fps": 10
+      },
+      "attack2": {
+        "file": "sprites/pharaoh_attack2.png",
+        "fps": 10
+      },
+      "smash": {
+        "file": "sprites/pharaoh_smash.png",
+        "fps": 8
+      },
+      "hit": {
+        "file": "sprites/pharaoh_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/pharaoh_death.png",
+        "fps": 6.7
+      }
+    }
+  },
+  "attacks": [
+    {
+      "type": "melee",
+      "range": 2.3,
+      "damage": 16,
+      "interval": 1.4,
+      "windup": 0.22,
+      "animation": "attack"
+    },
+    {
+      "type": "projectile",
+      "pattern": "fan",
+      "projectile": "bolt",
+      "count": 3,
+      "enraged_count": 5,
+      "spread": 13,
+      "speed": 9,
+      "damage": 10,
+      "interval": 5,
+      "min_range": 3,
+      "windup": 0.3,
+      "gap": 0,
+      "scale": 1.4,
+      "mouth": [
+        1.4,
+        -1.8
+      ],
+      "animation": "attack2"
+    },
+    {
+      "type": "shockwave",
+      "radius": 9,
+      "speed": 9,
+      "damage": 18,
+      "interval": 8,
+      "windup": 0.3,
+      "animation": "smash"
+    },
+    {
+      "type": "summon",
+      "enemy": "u",
+      "count": 2,
+      "interval": 15,
+      "windup": 0.5,
+      "near_player": true,
+      "animation": "attack"
+    },
+    {
+      "type": "charge",
+      "speed": 10,
+      "damage": 20,
+      "interval": 10,
+      "windup": 0.7,
+      "max_time": 1.5
+    }
+  ]
+}

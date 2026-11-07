@@ -1,0 +1,17 @@
+{
+  "id": "frost_citadel",
+  "name": "Ледяная цитадель",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Ледяные гули, ползуны из-под снега, ледяные маги — и Ледяной лорд, который бьёт ударной волной, зовёт гулей и бросается тараном. Четыре уровня.",
+  "api": 1,
+  "campaign": {
+    "title": "Ледяная цитадель",
+    "levels": [
+      "levels/01_snow_gate.txt",
+      "levels/02_ice_halls.txt",
+      "levels/03_frozen_hall.txt",
+      "levels/04_lord_throne.txt"
+    ]
+  }
+}

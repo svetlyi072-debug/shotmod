@@ -1,0 +1,61 @@
+{
+  "id": "sand_shaman",
+  "name": "Песчаный шаман",
+  "symbol": "h",
+  "stats": {
+    "health": 34,
+    "reward": 22,
+    "speed": 2.8,
+    "aggro_range": 9,
+    "attack_range": 1.2,
+    "attack_damage": 8,
+    "attack_cooldown": 1.3,
+    "attack_duration": 0.5,
+    "attack_hit_time": 0.3,
+    "dodge_chance": 0.4
+  },
+  "throw": {
+    "projectile": "bolt",
+    "damage": 11,
+    "cooldown": 3,
+    "min_range": 3,
+    "max_range": 8,
+    "scale": 1,
+    "explode_radius": 1,
+    "duration": 0.6,
+    "release_time": 0.4
+  },
+  "sprite": {
+    "frame": [
+      150,
+      150
+    ],
+    "scale": 1.3,
+    "animations": {
+      "idle": {
+        "file": "sprites/shaman_idle.png",
+        "fps": 5.7
+      },
+      "move": {
+        "file": "sprites/shaman_run.png",
+        "fps": 14.5
+      },
+      "attack": {
+        "file": "sprites/shaman_attack.png",
+        "fps": 16
+      },
+      "throw": {
+        "file": "sprites/shaman_attack3.png",
+        "fps": 20
+      },
+      "hurt": {
+        "file": "sprites/shaman_take_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/shaman_death.png",
+        "fps": 6.7
+      }
+    }
+  }
+}

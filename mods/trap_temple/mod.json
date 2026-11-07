@@ -1,0 +1,19 @@
+{
+  "id": "trap_temple",
+  "name": "Храм ловушек",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Шесть уровней-испытаний: пилы, огненные плиты, шипастые шары, шипы и ямы. Врагов почти нет — только твоя ловкость и тайминг.",
+  "api": 1,
+  "campaign": {
+    "title": "Храм ловушек",
+    "levels": [
+      "levels/01_saw_yard.txt",
+      "levels/02_fire_halls.txt",
+      "levels/03_pendulums.txt",
+      "levels/04_spike_bridge.txt",
+      "levels/05_trap_maze.txt",
+      "levels/06_death_hall.txt"
+    ]
+  }
+}

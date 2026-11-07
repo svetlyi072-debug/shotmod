@@ -1,0 +1,17 @@
+{
+  "id": "goblin_warcamp",
+  "name": "Лагерь гоблинов",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Красные громилы, сапёры с бомбами, шаманы со спорами и вождь Гракс, который швыряет бомбы дугой и зовёт гоблинов. Четыре уровня.",
+  "api": 1,
+  "campaign": {
+    "title": "Лагерь гоблинов",
+    "levels": [
+      "levels/01_palisade.txt",
+      "levels/02_camp.txt",
+      "levels/03_armory.txt",
+      "levels/04_chief_tent.txt"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "training_grounds",
+  "name": "Полигон",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Учебка для новичков: двенадцать коротких уровней, в каждом — один вид врага или ловушек и подсказка в названии, как с ним справиться.",
+  "api": 1,
+  "campaign": {
+    "title": "Полигон",
+    "levels": [
+      "levels/01_slimes.txt",
+      "levels/02_bats.txt",
+      "levels/03_skeletons.txt",
+      "levels/04_goblins.txt",
+      "levels/05_mushrooms.txt",
+      "levels/06_rats.txt",
+      "levels/07_mimics.txt",
+      "levels/08_panzers.txt",
+      "levels/09_zombies.txt",
+      "levels/10_traps.txt",
+      "levels/11_shield.txt",
+      "levels/12_exam.txt"
+    ]
+  }
+}

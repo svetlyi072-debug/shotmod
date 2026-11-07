@@ -1,0 +1,11 @@
+{
+  "id": "speedrun_timer",
+  "name": "Спидран-таймер",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Таймер прохождения уровня в углу экрана и сохранение рекордов по каждому уровню и сложности.",
+  "api": 1,
+  "scripts": [
+    "scripts/main.gd"
+  ]
+}

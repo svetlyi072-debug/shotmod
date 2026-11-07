@@ -1,0 +1,46 @@
+{
+  "id": "shadow_knight",
+  "name": "Теневой рыцарь",
+  "symbol": "e",
+  "stats": {
+    "health": 100,
+    "reward": 28,
+    "speed": 2.1,
+    "aggro_range": 6,
+    "attack_range": 1.6,
+    "attack_damage": 17,
+    "attack_cooldown": 1.7,
+    "attack_duration": 0.55,
+    "attack_hit_time": 0.3,
+    "dodge_chance": 0
+  },
+  "sprite": {
+    "frame": [
+      180,
+      180
+    ],
+    "scale": 1.15,
+    "animations": {
+      "idle": {
+        "file": "sprites/knight_idle.png",
+        "fps": 9.2
+      },
+      "move": {
+        "file": "sprites/knight_run.png",
+        "fps": 10
+      },
+      "attack": {
+        "file": "sprites/knight_attack.png",
+        "fps": 12.7
+      },
+      "hurt": {
+        "file": "sprites/knight_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/knight_death.png",
+        "fps": 10
+      }
+    }
+  }
+}

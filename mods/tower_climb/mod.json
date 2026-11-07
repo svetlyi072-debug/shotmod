@@ -1,0 +1,17 @@
+{
+  "id": "tower_climb",
+  "name": "Башни",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Четыре высокие башни: карабкайся по платформам вверх, пока враги ждут на каждом ярусе. Наверху — выход, а в последней башне ещё и Око бездны.",
+  "api": 1,
+  "campaign": {
+    "title": "Башни",
+    "levels": [
+      "levels/01_first.txt",
+      "levels/02_bones.txt",
+      "levels/03_spire.txt",
+      "levels/04_sky.txt"
+    ]
+  }
+}

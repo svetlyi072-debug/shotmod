@@ -1,0 +1,22 @@
+{
+  "id": "boss_rush",
+  "name": "Босс-раш",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Все восемь боссов ShootIn подряд — без беготни по уровням, только бои. В финале сразу трое.",
+  "api": 1,
+  "campaign": {
+    "title": "Босс-раш",
+    "levels": [
+      "levels/01_mushroom.txt",
+      "levels/02_bone_knight.txt",
+      "levels/03_abyss_eye.txt",
+      "levels/04_fire_worm.txt",
+      "levels/05_dark_wizard.txt",
+      "levels/06_ancient_slime.txt",
+      "levels/07_shellback_king.txt",
+      "levels/08_zombie_king.txt",
+      "levels/09_triple_threat.txt"
+    ]
+  }
+}

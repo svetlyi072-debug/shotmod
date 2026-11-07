@@ -1,0 +1,46 @@
+{
+  "id": "lava_warrior",
+  "name": "Лавовый воин",
+  "symbol": "S",
+  "stats": {
+    "health": 110,
+    "reward": 30,
+    "speed": 2,
+    "aggro_range": 6,
+    "attack_range": 1.6,
+    "attack_damage": 18,
+    "attack_cooldown": 1.8,
+    "attack_duration": 0.55,
+    "attack_hit_time": 0.3,
+    "dodge_chance": 0
+  },
+  "sprite": {
+    "frame": [
+      180,
+      180
+    ],
+    "scale": 1.15,
+    "animations": {
+      "idle": {
+        "file": "sprites/lava_idle.png",
+        "fps": 9.2
+      },
+      "move": {
+        "file": "sprites/lava_run.png",
+        "fps": 10
+      },
+      "attack": {
+        "file": "sprites/lava_attack.png",
+        "fps": 12.7
+      },
+      "hurt": {
+        "file": "sprites/lava_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/lava_death.png",
+        "fps": 10
+      }
+    }
+  }
+}

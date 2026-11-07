@@ -1,0 +1,61 @@
+{
+  "id": "ghost_mage",
+  "name": "Призрачный маг",
+  "symbol": "v",
+  "stats": {
+    "health": 36,
+    "reward": 24,
+    "speed": 2.4,
+    "aggro_range": 9,
+    "attack_range": 1.2,
+    "attack_damage": 8,
+    "attack_cooldown": 1.4,
+    "attack_duration": 0.5,
+    "attack_hit_time": 0.3,
+    "dodge_chance": 0.4
+  },
+  "throw": {
+    "projectile": "bolt",
+    "damage": 12,
+    "cooldown": 3,
+    "min_range": 3.5,
+    "max_range": 8,
+    "scale": 1.1,
+    "explode_radius": 1,
+    "duration": 0.6,
+    "release_time": 0.4
+  },
+  "sprite": {
+    "frame": [
+      250,
+      250
+    ],
+    "scale": 0.55,
+    "animations": {
+      "idle": {
+        "file": "sprites/mage_idle.png",
+        "fps": 8.9
+      },
+      "move": {
+        "file": "sprites/mage_run.png",
+        "fps": 11.4
+      },
+      "attack": {
+        "file": "sprites/mage_attack2.png",
+        "fps": 16
+      },
+      "throw": {
+        "file": "sprites/mage_attack1.png",
+        "fps": 13.3
+      },
+      "hurt": {
+        "file": "sprites/mage_take_hit.png",
+        "fps": 10
+      },
+      "death": {
+        "file": "sprites/mage_death.png",
+        "fps": 7.8
+      }
+    }
+  }
+}

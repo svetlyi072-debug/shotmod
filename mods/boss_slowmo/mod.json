@@ -1,0 +1,11 @@
+{
+  "id": "boss_slowmo",
+  "name": "Финальный удар",
+  "version": "1.0.0",
+  "author": "ShootIn",
+  "description": "Когда побеждён босс, время на полторы секунды замедляется — как в кино.",
+  "api": 1,
+  "scripts": [
+    "scripts/main.gd"
+  ]
+}

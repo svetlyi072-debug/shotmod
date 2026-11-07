@@ -1,0 +1,46 @@
+{
+  "id": "tomb_guard",
+  "name": "Страж гробницы",
+  "symbol": "i",
+  "stats": {
+    "health": 120,
+    "reward": 32,
+    "speed": 1.9,
+    "aggro_range": 6,
+    "attack_range": 1.7,
+    "attack_damage": 19,
+    "attack_cooldown": 1.9,
+    "attack_duration": 0.55,
+    "attack_hit_time": 0.32,
+    "dodge_chance": 0
+  },
+  "sprite": {
+    "frame": [
+      180,
+      180
+    ],
+    "scale": 1.15,
+    "animations": {
+      "idle": {
+        "file": "sprites/guard_idle.png",
+        "fps": 9.2
+      },
+      "move": {
+        "file": "sprites/guard_run.png",
+        "fps": 9.4
+      },
+      "attack": {
+        "file": "sprites/guard_attack.png",
+        "fps": 12.7
+      },
+      "hurt": {
+        "file": "sprites/guard_hit.png",
+        "fps": 13.3
+      },
+      "death": {
+        "file": "sprites/guard_death.png",
+        "fps": 10
+      }
+    }
+  }
+}
