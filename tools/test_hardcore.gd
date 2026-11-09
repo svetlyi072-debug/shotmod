@@ -1,10 +1,10 @@
 extends SceneTree
-## Проверка мода «Хардкорный режим» в настоящей игре: настройки (чтение, запись, проверка описания),
+## Проверка мода «Хардкор» в настоящей игре: настройки (чтение, запись, проверка описания),
 ## фиксация сложности, смерть = конец забега, ультра-хардкор и «в финале убить всех врагов».
-## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_hardcore_mode.gd
+## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_hardcore.gd
 ## Код выхода 0 — всё хорошо. Сохранения и настройки игрока возвращаются на место.
 
-const MOD_ID := "hardcore_mode"
+const MOD_ID := "hardcore"
 
 var fails := 0
 var game
@@ -52,7 +52,13 @@ func _initialize() -> void:
 func run() -> void:
 	game = root.get_node("Game")
 	mods = root.get_node("Mods")
-	_save_user_files()
+	var user_state = load("D:/ShotMOD/tools/user_state.gd")
+	user_state.backup(mods)  # данные игрока (сохранения, настройки, моды) спрятаны до конца проверки
+	# Если проверка зависнет (ошибка внутри await), через 4 минуты вернуть данные игрока и выйти.
+	create_timer(240.0, true, false, true).timeout.connect(func() -> void:
+		print("ТАЙМАУТ: проверка зависла, данные игрока возвращены")
+		user_state.restore(mods)
+		quit(3))
 	seed(11)
 	mods.extra_dirs.append("D:/ShotMOD/mods")
 	await frames(2)
@@ -62,13 +68,15 @@ func run() -> void:
 	var mod = mods.get_mod(MOD_ID)
 	check(mod != null and mod.ok() and mod.has_scripts(), "мод найден, скрипт на месте")
 	if mod == null:
-		print("ИТОГ: мод не найден — собери его: node tools/build.js hardcore_mode")
+		print("ИТОГ: мод не найден — собери его: node tools/build.js hardcore")
+		user_state.restore(mods)
 		quit(1)
 		return
 	check(mod.api == 2 and mod.problems.is_empty(), "api 2, проблем нет (%s)" % str(mod.problems))
-	check(mod.settings.size() == 3, "в моде три настройки (%d)" % mod.settings.size())
+	check(mod.settings.size() == 5, "в моде пять настроек (%d)" % mod.settings.size())
 	check(mods.get_setting(MOD_ID, "difficulty") == 0, "по умолчанию сложность — «Сложная» (вариант 0)")
-	check(mods.get_setting(MOD_ID, "final_clear") == false and mods.get_setting(MOD_ID, "ultra") == false, "финал и ультра по умолчанию выключены")
+	check(mods.get_setting(MOD_ID, "permadeath") == true, "«Одна жизнь» по умолчанию включена")
+	check(mods.get_setting(MOD_ID, "final_clear") == false and mods.get_setting(MOD_ID, "ultra") == false and mods.get_setting(MOD_ID, "tough") == false, "финал, ультра и «Крепкие враги» по умолчанию выключены")
 	check(mods.get_setting(MOD_ID, "нет_такой") == null, "неизвестная настройка даёт null")
 	mods.set_setting(MOD_ID, "difficulty", 99)
 	check(mods.get_setting(MOD_ID, "difficulty") == 3, "значение вне диапазона приводится к ближайшему допустимому")
@@ -140,6 +148,32 @@ func run() -> void:
 	check(not player.is_dead(), "ультра-хардкор: лечение смерти не вызывает")
 	mods.set_setting(MOD_ID, "ultra", false)
 
+	# --- «Крепкие враги»: так работал «Хардкор» 1.0 (по умолчанию выключено) ---
+	player = await open_level(0, 2)
+	var plain_slime = get_nodes_in_group("enemies").filter(func(e): return e.get_script().get_global_name() == "Slime")[0]
+	check(player.max_health == 100 and plain_slime.max_health == 20, "по умолчанию игрок и враги без усилений (игрок %d, слизень %d)" % [player.max_health, plain_slime.max_health])
+	mods.set_setting(MOD_ID, "tough", true)
+	player = await open_level(0, 2)
+	var tough_slime = get_nodes_in_group("enemies").filter(func(e): return e.get_script().get_global_name() == "Slime")[0]
+	check(player.max_health == 70 and player.health == 70, "«Крепкие враги»: у игрока 70 здоровья (%d)" % player.health)
+	check(tough_slime.max_health == 30, "«Крепкие враги»: у слизня 30 вместо 20 (%d)" % tough_slime.max_health)
+	player.take_damage(10, player.global_position + Vector2(30, 0))
+	await frames(3)
+	check(player.health == 55, "«Крепкие враги»: удар на 10 снимает 15 (%d)" % player.health)
+	mods.set_setting(MOD_ID, "tough", false)
+
+	# --- «Одна жизнь» выключена: смерть как в обычной игре ---
+	mods.set_setting(MOD_ID, "permadeath", false)
+	check(not mods.permadeath_active(), "«Одна жизнь» выключена: правила смерти нет")
+	player = await open_level(2, 2)
+	player.kill()
+	await frames(10)
+	check(not game.saved_progress().is_empty(), "без «Одной жизни» сохранение после смерти остаётся")
+	press_restart()
+	await frames(30)
+	check(game.level_index == 2 and not game.is_game_over, "без «Одной жизни» R перезапускает только уровень")
+	mods.set_setting(MOD_ID, "permadeath", true)
+
 	# --- Финал: убить всех врагов ---
 	var last: int = game.level_count() - 1
 	mods.set_setting(MOD_ID, "final_clear", false)
@@ -182,7 +216,7 @@ func run() -> void:
 	await frames(30)
 	check(game.level_index == 1 and not game.is_game_over, "без мода R снова перезапускает уровень")
 
-	_restore_user_files()
+	user_state.restore(mods)
 	print("ИТОГ: %s (%d ошибок)" % ["ВСЁ ХОРОШО" if fails == 0 else "ЕСТЬ ОШИБКИ", fails])
 	quit(1 if fails else 0)
 
@@ -220,24 +254,3 @@ func _test_bad_settings() -> void:
 	DirAccess.remove_absolute(path)
 	DirAccess.remove_absolute(dir)
 	mods.rescan()
-
-
-const USER_FILES := ["user://progress.cfg", "user://mod_progress.cfg", "user://mods.cfg", "user://settings.cfg", "user://mod_settings.cfg"]
-var _backup := {}
-
-
-func _save_user_files() -> void:
-	for path in USER_FILES:
-		_backup[path] = FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else null
-
-
-func _restore_user_files() -> void:
-	for path in USER_FILES:
-		var data = _backup.get(path)
-		if data == null:
-			if FileAccess.file_exists(path):
-				DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
-		else:
-			var file := FileAccess.open(path, FileAccess.WRITE)
-			file.store_buffer(data)
-			file.close()

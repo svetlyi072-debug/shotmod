@@ -1,15 +1,12 @@
 extends SceneTree
-## Кадры для публикации мода «Хардкорный режим»: меню «Моды» с настройками и экран «Ты умер».
+## Кадры для публикации мода «Хардкор»: меню «Моды» с настройками и экран «Ты умер».
 ## Нужно окно (рендер), поэтому без --headless:
 ##   godot --path D:/shootin --resolution 1280x720 --script D:/ShotMOD/tools/make_hardcore_shots.gd
-## Кладёт кадры в screenshots/ и обложку-заготовку в build/shots/hardcore_mode_cover.png.
+## Кладёт кадры в screenshots/ и обложку-заготовку в build/shots/hardcore_cover.png.
 
 const OUT := "D:/ShotMOD/screenshots/"
-const COVER := "D:/ShotMOD/build/shots/hardcore_mode_cover.png"
-const MOD_ID := "hardcore_mode"
-const USER_FILES := ["user://progress.cfg", "user://mod_progress.cfg", "user://mods.cfg", "user://settings.cfg", "user://mod_settings.cfg"]
-
-var _backup := {}
+const COVER := "D:/ShotMOD/build/shots/hardcore_cover.png"
+const MOD_ID := "hardcore"
 
 
 func frames(n: int) -> void:
@@ -33,8 +30,13 @@ func _initialize() -> void:
 func run() -> void:
 	var game = root.get_node("Game")
 	var mods = root.get_node("Mods")
-	for path in USER_FILES:
-		_backup[path] = FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else null
+	var user_state = load("D:/ShotMOD/tools/user_state.gd")
+	user_state.backup(mods)  # данные игрока (сохранения, настройки, моды) спрятаны до конца проверки
+	# Если проверка зависнет (ошибка внутри await), через 4 минуты вернуть данные игрока и выйти.
+	create_timer(240.0, true, false, true).timeout.connect(func() -> void:
+		print("ТАЙМАУТ: проверка зависла, данные игрока возвращены")
+		user_state.restore(mods)
+		quit(3))
 	mods.extra_dirs.append("D:/ShotMOD/mods")
 	await frames(2)
 	mods.rescan()
@@ -58,7 +60,7 @@ func run() -> void:
 		if label.text.begins_with("Моды лежат в папке"):
 			label.text = "Моды лежат в папке «mods» рядом с игрой или в данных игры"
 	await frames(2)
-	await snap(OUT + "hardcore_mode_settings.png")
+	await snap(OUT + "hardcore_settings.png")
 
 	# Экран смерти — он же обложка.
 	mods.set_setting(MOD_ID, "ultra", false)
@@ -69,16 +71,8 @@ func run() -> void:
 	var player = get_first_node_in_group("player")
 	player.kill()
 	await frames(20)
-	await snap(OUT + "hardcore_mode_death.png")
+	await snap(OUT + "hardcore_death.png")
 	await snap(COVER)
 
-	for path in USER_FILES:
-		var data = _backup.get(path)
-		if data == null:
-			if FileAccess.file_exists(path):
-				DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
-		else:
-			var file := FileAccess.open(path, FileAccess.WRITE)
-			file.store_buffer(data)
-			file.close()
+	user_state.restore(mods)
 	quit()

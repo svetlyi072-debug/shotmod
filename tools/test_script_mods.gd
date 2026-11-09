@@ -64,6 +64,13 @@ func run() -> void:
 	game = root.get_node("Game")
 	mods = root.get_node("Mods")
 	seed(7)
+	var user_state = load("D:/ShotMOD/tools/user_state.gd")
+	user_state.backup(mods)  # данные игрока (сохранения, настройки, моды) спрятаны до конца проверки
+	# Если проверка зависнет (ошибка внутри await), через 4 минуты вернуть данные игрока и выйти.
+	create_timer(240.0, true, false, true).timeout.connect(func() -> void:
+		print("ТАЙМАУТ: проверка зависла, данные игрока возвращены")
+		user_state.restore(mods)
+		quit(3))
 	mods.extra_dirs.append("D:/ShotMOD/mods")
 	await frames(1)
 	mods.rescan()
@@ -86,6 +93,10 @@ func run() -> void:
 
 	# ---------- Хардкор ----------
 	only("hardcore")
+	# «Крепкие враги» — это и есть прежний «Хардкор» (теперь настройка; по умолчанию выключена).
+	mods.set_setting("hardcore", "tough", true)
+	mods.set_setting("hardcore", "permadeath", false)
+	mods.set_setting("hardcore", "difficulty", 3)
 	p = await open_level(0)
 	var slime = enemies_of("Slime")[0]
 	check(p.max_health == 70 and p.health == 70, "хардкор: у игрока 70 здоровья (%d)" % p.health)
@@ -98,6 +109,9 @@ func run() -> void:
 	p.take_damage(200, p.global_position + Vector2(30, 0))
 	await frames(5)
 	check(p.is_dead(), "хардкор: смертельный удар убивает")
+	mods.set_setting("hardcore", "tough", false)
+	mods.set_setting("hardcore", "permadeath", true)
+	mods.set_setting("hardcore", "difficulty", 0)
 
 	# ---------- Лунная гравитация ----------
 	only("moon_gravity")
@@ -262,12 +276,6 @@ func run() -> void:
 	game.clear_progress()
 	mods.extra_dirs.clear()
 	mods._deactivate_all()
-	for f in ["user://mods.cfg", "user://mod_progress.cfg"]:
-		if FileAccess.file_exists(f):
-			DirAccess.remove_absolute(ProjectSettings.globalize_path(f))
-	var data_dir := ProjectSettings.globalize_path("user://mod_data")
-	for f in ["speedrun_timer.json", "vampire_rage.json"]:
-		if FileAccess.file_exists(data_dir.path_join(f)):
-			DirAccess.remove_absolute(data_dir.path_join(f))
+	user_state.restore(mods)
 	print("ИТОГ: %s (%d ошибок)" % ["ВСЁ ХОРОШО" if fails == 0 else "ЕСТЬ ОШИБКИ", fails])
 	quit(1 if fails else 0)
