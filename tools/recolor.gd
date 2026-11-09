@@ -1,7 +1,7 @@
 extends SceneTree
 ## Перекрашивает спрайты игры в новые палитры для модов.
 ## Запуск (из папки игры, где лежат assets/):
-##   godot --headless --path D:/shootin --script D:/ShotMOD/tools/recolor.gd -- D:/ShotMOD/build/jobs.json
+##   node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/recolor.gd -- D:/ShotMOD/build/jobs.json
 ## jobs.json: {"jobs": [{"src": "абсолютный путь к PNG", "dst": "куда сохранить", "preset": "fire"}, ...]}
 ## Палитры — в PRESETS: градиент от тёмного к светлому и «акцентный» оттенок для насыщенных
 ## пикселей (кожа, одежда), чтобы детали не сливались в один цвет.

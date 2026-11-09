@@ -1,7 +1,7 @@
 extends SceneTree
 ## Проверка мода «Хардкор» в настоящей игре: настройки (чтение, запись, проверка описания),
 ## фиксация сложности, смерть = конец забега, ультра-хардкор и «в финале убить всех врагов».
-## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_hardcore.gd
+## Запуск: node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/test_hardcore.gd
 ## Код выхода 0 — всё хорошо. Сохранения и настройки игрока возвращаются на место.
 
 const MOD_ID := "hardcore"

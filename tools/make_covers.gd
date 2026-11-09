@@ -1,7 +1,7 @@
 extends SceneTree
 ## Обложки модов 630×500 для страниц публикации: кадр из игры (или тёмный фон) + название и описание.
 ## Запуск (окно нужно ради рендера):
-##   godot --path D:/shootin --resolution 630x500 --script D:/ShotMOD/tools/make_covers.gd
+##   node tools/godot_isolated.js --resolution 630x500 --script D:/ShotMOD/tools/make_covers.gd
 ## Берёт build/catalog.json и build/shots/<id>_cover.png, кладёт результат в covers/<id>.png.
 
 const CATALOG := "D:/ShotMOD/build/catalog.json"

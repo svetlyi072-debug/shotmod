@@ -1,7 +1,7 @@
 extends SceneTree
 ## Кадры для публикации мода «Хардкор»: меню «Моды» с настройками и экран «Ты умер».
 ## Нужно окно (рендер), поэтому без --headless:
-##   godot --path D:/shootin --resolution 1280x720 --script D:/ShotMOD/tools/make_hardcore_shots.gd
+##   node tools/godot_isolated.js --resolution 1280x720 --script D:/ShotMOD/tools/make_hardcore_shots.gd
 ## Кладёт кадры в screenshots/ и обложку-заготовку в build/shots/hardcore_cover.png.
 
 const OUT := "D:/ShotMOD/screenshots/"

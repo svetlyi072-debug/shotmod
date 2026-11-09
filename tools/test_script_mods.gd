@@ -1,6 +1,6 @@
 extends SceneTree
 ## Проверка скриптовых модов из D:/ShotMOD/mods в настоящей игре (по одному, на встроенных уровнях).
-## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_script_mods.gd
+## Запуск: node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/test_script_mods.gd
 
 var fails := 0
 var game
@@ -211,6 +211,7 @@ func run() -> void:
 
 	# ---------- Спидран-таймер ----------
 	only("speedrun_timer")
+	mods.set_setting("speedrun_timer", "mode", 1)  # проверяем режим «Один уровень» (как в версии 1.0); режим «Вся игра» — в test_speedrun.gd
 	p = await open_level(0)
 	var timer_mod = script_of("speedrun_timer")
 	await frames(60)
@@ -222,6 +223,7 @@ func run() -> void:
 	check(hint_text[0].contains("РЕКОРД"), "первое прохождение — рекорд: «%s»" % hint_text[0])
 	check(not timer_mod._running, "после прохождения таймер остановлен")
 	check(mods.load_mod_data(mods.get_mod("speedrun_timer")).get("best", {}).size() == 1, "рекорд сохранён на диск")
+	mods.set_setting("speedrun_timer", "mode", 0)
 
 	# ---------- Яблоки с врагов ----------
 	only("apple_drops")

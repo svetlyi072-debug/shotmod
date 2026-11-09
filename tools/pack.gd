@@ -1,6 +1,6 @@
 extends SceneTree
 ## Упаковывает каждый мод из D:/ShotMOD/mods в dist/<id>-<версия>.zip (mod.json — в корне архива).
-## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/pack.gd
+## Запуск: node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/pack.gd
 
 const MODS := "D:/ShotMOD/mods"
 const DIST := "D:/ShotMOD/dist"

@@ -1,7 +1,7 @@
 extends SceneTree
 ## Проверяет готовые архивы из D:/ShotMOD/dist так, как их поставит игрок: установка из .zip,
 ## включение, загрузка всех уровней кампании, запуск скриптов. В конце всё удаляется.
-## Запуск: godot --headless --path D:/shootin --script D:/ShotMOD/tools/check_dist.gd
+## Запуск: node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/check_dist.gd
 
 const DIST := "D:/ShotMOD/dist"
 

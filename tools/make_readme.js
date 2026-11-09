@@ -36,7 +36,7 @@ for (const [kind, title] of KINDS) {
   lines.push('');
 }
 
-lines.push('> **Хардкор** 1.1.0 использует API модов 2 (настройки мода) и требует игру **ShootIn 1.1.0** и новее; остальные моды работают и в версии 1.0.0.', '');
+lines.push('> **Хардкор** 1.1.0 и **Спидран-таймер** 1.1.0 используют API модов 2 (настройки мода) и требуют игру **ShootIn 1.1.0** и новее; остальные моды работают и в версии 1.0.0.', '');
 
 lines.push('## Как установить мод игроку', '',
   '1. Запусти ShootIn → **Моды** → **Установить из файла…** → выбери `.zip` (или вставь ссылку и нажми **Скачать и установить**).',
@@ -46,7 +46,7 @@ lines.push('## Как установить мод игроку', '',
 
 lines.push('## Идеи сочетаний', '',
   '- **Для новичков:** «Полигон» + «Полоски здоровья и урон» + «Яблоки с врагов».',
-  '- **Для профи:** «Хардкор» + «Жажда крови» + «Спидран-таймер» + «Босс-раш».',
+  '- **Для профи:** «Хардкор» + «Жажда крови» + «Спидран-таймер» (режим «Вся игра») + «Босс-раш».',
   '- **Без права на ошибку:** «Хардкор» (смерть — игра с 1 уровня; в настройках — убить всех врагов в финале, «ультра-хардкор»: любой урон убивает, «крепкие враги»).',
   '- **Для веселья:** «Режим хаоса» + «Лунная гравитация» + «Двойной прыжок» + «Небесные острова».',
   '- **Кино:** «Финальный удар» + «Босс-раш».', '');
@@ -66,12 +66,14 @@ lines.push('## Пересборка и проверка', '',
   'node tools/build.js                   # собрать все моды (карты проверяет валидатор игры)',
   'node tools/build.js --author "Имя"     # то же, с другим автором в mod.json',
   'node tools/build.js trap_temple        # собрать один мод',
-  'godot --headless --path D:/shootin --script D:/ShotMOD/tools/pack.gd          # упаковать в dist/*.zip',
-  'godot --headless --path D:/shootin --script D:/ShotMOD/tools/check_dist.gd    # поставить архивы как игрок и загрузить все уровни',
-  'godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_script_mods.gd   # проверить поведение скриптовых модов',
-  'godot --headless --path D:/shootin --script D:/ShotMOD/tools/test_hardcore.gd  # проверить «Хардкор»: настройки, смерть, ультра, крепкие враги, финал',
-  'godot --path D:/shootin --resolution 1280x720 --script D:/ShotMOD/tools/make_hardcore_shots.gd   # кадры для публикации (нужно окно)',
+  'node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/pack.gd          # упаковать в dist/*.zip',
+  'node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/check_dist.gd    # поставить архивы как игрок и загрузить все уровни',
+  'node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/test_script_mods.gd   # проверить поведение скриптовых модов',
+  'node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/test_hardcore.gd  # проверить «Хардкор»: настройки, смерть, ультра, крепкие враги, финал',
+  'node tools/godot_isolated.js --headless --script D:/ShotMOD/tools/test_speedrun.gd  # проверить «Спидран-таймер»: вся игра, рекорд забега, разница, возобновление',
+  'node tools/godot_isolated.js --resolution 1280x720 --script D:/ShotMOD/tools/make_hardcore_shots.gd   # кадры для публикации (нужно окно)',
   '```', '',
+  'Проверки запускаются через `tools/godot_isolated.js`: он подменяет папку данных Godot (APPDATA), поэтому тесты не трогают твои настоящие сохранения, настройки и установленные моды. Запускать их напрямую через `godot --script …` не стоит.', '',
   'Скрипты скриптовых модов лежат в `src/<id>/scripts/main.gd` — правь их и пересобирай.', '');
 
 fs.writeFileSync(path.join(ROOT, 'README.md'), lines.join('\n'));
